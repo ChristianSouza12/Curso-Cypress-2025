@@ -68,6 +68,53 @@ describe("Work with basic elements", () => {
         .should("be.checked")
 
         cy.get("#formSexoFem").should("not.be.checked")
+
+
+
+        cy.get('[name="formSexo"]')
+        .should("have.length" , 2)
+    })
+
+    it("CheckBox" , () =>{
+        cy.visit("https://wcaquino.me/cypress/componentes.html")
+
+        cy.get("#formComidaPizza")
+        .click()
+        .should("be.checked")
+        .click()
+        .should("not.be.checked")
+
+        cy.get("[name='formComidaFavorita']").click({multiple:true})
+        .should("be.checked")
+
+        cy.get("#formComidaVegetariana")
+        .click()
+        .should("not.be.checked")
+    })
+
+    it("Combo", () => {
+
+        cy.visit("https://wcaquino.me/cypress/componentes.html")
+
+        cy.get('[name="formEscolaridade"]')
+        .select("Superior")
+        .should("have.value","superior")
+
+
+        cy.get('[name="formEscolaridade"]')
+        .select("1graucomp")
+        .should("have.value","1graucomp")
+
+    })
+
+    it.only("Multiple Comb" , () => {
+        cy.visit("https://wcaquino.me/cypress/componentes.html")
+
+            cy.get("#formEsportes")
+            .select(["natacao","Corrida","nada"])
+            
+
+
     })
 })
 
