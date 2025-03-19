@@ -105,6 +105,9 @@ describe("Work with basic elements", () => {
         .select("1graucomp")
         .should("have.value","1graucomp")
 
+        // fazer!!!
+        /// validar as opcoes do combo
+
     })
 
     it.only("Multiple Comb" , () => {
@@ -115,6 +118,16 @@ describe("Work with basic elements", () => {
             
 
 
+
+
+            // fazer !!!
+            // validar opcoes selecionada do combo multiplo
+
+            // 
+
+
+
+            
     })
 })
 
