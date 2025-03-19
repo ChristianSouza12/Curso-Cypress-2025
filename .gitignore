@@ -1,0 +1,13 @@
+# Ignorar a pasta node_modules
+node_modules/
+
+# Ignorar arquivos de vídeo e screenshots do Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Ignorar resultados de testes (se estiver usando algo como mochawesome)
+cypress/results/
+
+# Ignorar configurações específicas do Cypress (se necessário)
+cypress/fixtures/
+cypress/support/
