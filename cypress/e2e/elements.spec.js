@@ -110,7 +110,7 @@ describe("Work with basic elements", () => {
 
     })
 
-    it.only("Multiple Comb" , () => {
+    it("Multiple Comb" , () => {
         cy.visit("https://wcaquino.me/cypress/componentes.html")
 
             cy.get("#formEsportes")
@@ -129,5 +129,7 @@ describe("Work with basic elements", () => {
 
             
     })
+
+    
 })
 
