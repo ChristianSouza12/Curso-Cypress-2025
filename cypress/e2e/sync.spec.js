@@ -13,7 +13,7 @@ it("Deve aguardar elemento estar disponivel" , () => {
 
 })
 
-it.only("Deve fazer retrys" , () => {
+it("Deve fazer retrys" , () => {
     cy.visit("https://wcaquino.me/cypress/componentes.html")
 
     cy.get("#buttonDelay").click()
@@ -28,4 +28,36 @@ it.only("Deve fazer retrys" , () => {
    
 
 
+})
+
+it('Uso do find' , () => {
+    cy.visit("https://wcaquino.me/cypress/componentes.html")
+
+    cy.get("#buttonListDOM").click()
+    cy.get("#lista li")
+    .find("span")
+    .should("contain", "Item 1")
+
+    cy.get("#lista li")
+    .find("span")
+    .should("contain", "Item 2")
+    
+})
+
+
+
+
+it.only("Uso do timeout" , () => {
+    cy.visit("https://wcaquino.me/cypress/componentes.html")
+    // cy.get("#buttonDelay").click()
+    // cy.get("#novoCampo",{timeout:1000}).should("exist")
+    // cy.get("#buttonListDOM").click()
+    // cy.get("#lista li span", {timeout:6000})
+    // .should("contain", "Item 2")
+
+
+     cy.get("#buttonListDOM").click()
+     cy.get("#buttonListDOM").click()
+    cy.get("#lista li span", {timeout:6000})
+    .should("have.length", 2)
 })
