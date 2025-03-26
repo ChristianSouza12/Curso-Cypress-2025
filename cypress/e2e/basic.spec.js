@@ -4,7 +4,7 @@
 
 describe("Cypress basic" , () => {
 
-    it("Should visit a page and asset title" , () => {
+    it.only("Should visit a page and asset title" , () => {
 
         cy.visit("https://wcaquino.me/cypress/componentes.html")
 
@@ -35,25 +35,38 @@ describe("Cypress basic" , () => {
 
 
 
+        let syncTitle 
+
 
 
         // escrever o title no campo de texto
 
 
-        cy.title().then(() => {
-            cy.get("#formNome")
-                .should("exist")
-                .should("be.visible")
-                .type("Christian");
+        cy.title().then((title) => {
+          
+            cy.get("#formNome").type(title)
+
+
+            syncTitle = title
+              
         });
 
 
-        cy.title().then(() => {
-            cy.get("#formSobrenome")
-            .should("exist")
-            .should("be.visible")
-            .type("Souza")
+        cy.get("#formSobrenome").then($el => {
+            $el.val(syncTitle)
         })
+
+        cy.get("#elementosForm\\:sugestoes").then($el =>{
+            cy.wrap($el).type(syncTitle)
+        })
+
+
+        // cy.title().then(() => {
+        //     cy.get("#formSobrenome")
+        //     .should("exist")
+        //     .should("be.visible")
+        //     .type("Souza")
+        // })
     })
 
 
@@ -69,5 +82,19 @@ describe("Cypress basic" , () => {
     
 
     })
+
+    it("Should vs Then" , () => {
+        cy.visit("https://wcaquino.me/cypress/componentes.html")
+        cy.get("#buttonListDOM").then($el=>{
+            // console.log($el)
+            expect($el).to.have.length(1)
+
+            cy.get("#buttonList")
+        })
+
+    })
+
+
+// should fica sendo executado enquanto espera, o then espera ser concluido para mandar o resultado da busca
 })
 

@@ -108,15 +108,39 @@ describe("Work with basic elements", () => {
         // fazer!!!
         /// validar as opcoes do combo
 
+
+        cy.get('[data-test=dataEscolaridade] option')
+        .should("have.length", 8)
+
+        cy.get('[data-test=dataEscolaridade] option')
+        .then($arr =>{
+            const values = [] 
+
+            $arr.each(function(){
+                values.push(this.innerHTML)
+            })
+
+            expect(values).to.include.members(["Superior", "Mestrado"])
+        })
+
+
+
     })
 
-    it("Multiple Comb" , () => {
+    it.only("Multiple Comb" , () => {
         cy.visit("https://wcaquino.me/cypress/componentes.html")
 
             cy.get("#formEsportes")
             .select(["natacao","Corrida","nada"])
             
 
+            cy.get("#formEsportes").then($el =>{
+                expect($el.val()).to.be.deep.equal(["natacao","Corrida","nada"])
+                expect($el.val()).to.have.length(3)
+            })
+
+            cy.get("#formEsportes").invoke('val')
+            .should("eql" , ["natacao","Corrida","nada"] )
 
 
 
