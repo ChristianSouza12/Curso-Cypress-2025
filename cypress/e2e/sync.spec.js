@@ -47,7 +47,7 @@ it('Uso do find' , () => {
 
 
 
-it.only("Uso do timeout" , () => {
+it("Uso do timeout" , () => {
     cy.visit("https://wcaquino.me/cypress/componentes.html")
     // cy.get("#buttonDelay").click()
     // cy.get("#novoCampo",{timeout:1000}).should("exist")
@@ -60,4 +60,11 @@ it.only("Uso do timeout" , () => {
      cy.get("#buttonListDOM").click()
     cy.get("#lista li span", {timeout:6000})
     .should("have.length", 2)
+})
+
+it.only("Click Retry" , () => {
+    cy.visit("https://wcaquino.me/cypress/componentes.html")
+    cy.get("#buttonCount").click().click()
+    
+    .should("have.value", "111")
 })
